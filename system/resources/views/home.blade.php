@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('banner')
           <style type="text/css">
               .navbar{
                 margin-bottom: 0 !important;
@@ -13,9 +13,12 @@
                 @endforeach
           </ul>  
 
+
+
 <script type="text/javascript">
         window.addEventListener('load', function () {
         var slsh = new SlideShow('.slideshow', {timeout: 5000});
     });
+
 </script>
 @endsection
