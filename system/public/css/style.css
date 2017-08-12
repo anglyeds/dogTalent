@@ -1,8 +1,8 @@
 /* Specially CSS for dogTalent website */
 
 .image-box{
-	width:200px;
-	height:200px !important;
+	width:118px;
+	height:148px !important;
 	border: 1px solid;
 	float:left;
 	margin:0 0 10px 5px;
@@ -129,14 +129,7 @@ body {
     margin: 0 auto;
     text-align: left; /* this overrides the text-align: center on the body element. */
 }
-.dogTalent #header {
-    padding-top: 0;
-    height: 85px;
-    border-bottom: 1px dashed #CCC;
-    margin-bottom: 15px;
-    width: 900px;
-    margin: 0 auto;
-}
+
 
 .dogTalent #banner {
     padding-top: 0;
@@ -159,7 +152,6 @@ body {
     margin-top: 15px;
     border-top: 1px dashed #CCC;
     font: 11px Verdana, Tahoma, Arial;
-    width: 900px;
     margin: 0 auto;
 }
 .dogTalent #footer p {
@@ -211,7 +203,6 @@ a {
     text-decoration: none;
 }
 #content {
-    width: 780px;
     overflow: hidden;
 }
 .countries {
@@ -414,6 +405,18 @@ iframe {
     overflow: hidden;
 }
 
+.left-col{
+    height:700px;
+}
+
+.right-col{
+    height:700px;
+}
+
+.body-content{
+    margin-top:10px;
+    margin-bottom:10px;
+}
 
 /**************************************************************
 

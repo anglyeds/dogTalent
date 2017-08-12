@@ -15,7 +15,7 @@ class DogController extends Controller
     public function index($id)
     {
     	$dogs = Dog::find($id);
-        return view('talents.profile')
+        return view('dogs.profile')
             ->with('dog', $dogs);
     }
 

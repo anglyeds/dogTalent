@@ -20,34 +20,115 @@
     <link href="{{ asset('bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     @yield('css')
 </head>
+
+<style>
+@media (min-width: 1100px) {
+
+    .container{
+        width: 900px !important;
+    }
+
+}
+
+@media (max-width:767px){
+
+        .dogTalent #header {
+            padding-top: 0;
+            border-bottom: 1px dashed #CCC;
+            margin-bottom: 15px;
+        }
+}
+
+
+@media (min-width:767px){
+
+        .dogTalent #header {
+            padding-top: 0;
+            height: 81px;
+            border-bottom: 1px dashed #CCC;
+            margin-bottom: 15px;
+        }
+}
+
+.navbar{
+        margin-bottom: 0px !important;
+}
+
+.navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #ddd !important;
+}
+
+.navbar-toggle {
+    border-color: #ddd !important;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #888 !important;
+}
+
+.navbar-toggle .icon-bar {
+    display: block !important;
+    width: 22px !important;
+    height: 2px !important;
+    border-radius: 1px !important;
+}
+
+
+
+</style>
 <body class="dogTalent">
 
     <div class="container">
+
         <div id="header">
-
             <div class="logo">
-                <a href="#"><img class="img-responsive" src="{{ URL::asset('/storage/logo/hollywoof_logo.jpeg') }}" style=""></a>
+                <a href="{{route('home')}}"><img class="img-responsive" src="{{ URL::asset('/storage/logo/hollywoof_logo.jpeg') }}" style=""></a>
             </div>
 
-            <div class="topbutton">
-                
-            {{ menu('main_menu', 'layouts.nav') }} 
-
+            <div class="topbutton hidden-xs">               
+                {{ menu('main_menu', 'layouts.nav') }} 
             </div>
-             
+            <div class="navbar hidden-lg hidden-md hidden-sm">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
 
+                </div>
+                <div class="collapse navbar-collapse">
+                  <ul class="nav navbar-nav">
+                   {{ menu('main_menu', 'layouts.mobile_nav') }} 
+                </div><!--/.nav-collapse -->   
+            </div>        
         </div>
+
         <!-- End Header -->
-        <div id="banner">
              @yield('banner')
-        </div>
+             @if(count($errors->all()))
+                <div class="alert alert-danger pop-alert">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if(session('status'))
+                <div class="alert alert-success pop-alert">
+                    {{session('status')}}
+                </div>
+            @endif
+            @yield('content')
 
         <div id="footer">
            {{ menu('footer_menu', 'layouts.footer') }} 
         </div>
     </div>
    
-        @yield('content')
+        
 
 
     <!-- Scripts -->
@@ -55,6 +136,12 @@
     <script src="{{ asset('node_modules/simple-slideshow/src/slideshow.js') }}"></script>
     <script src="{{ asset('node_modules/SpryAssets/SpryMenuBar.js') }}"></script>
     <script src="{{ asset('node_modules/SpryAssets/SprySlidingPanels.js') }}"></script>
+    <script type="text/javascript">
+        function fade() {
+            $('.pop-alert').delay(2500).fadeOut(1000,"swing");
+        }
+        fade();
+    </script> 
     
     @yield('js')
 </body>

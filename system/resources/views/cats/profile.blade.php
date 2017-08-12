@@ -8,24 +8,24 @@
             <div class="well well-sm">
                 <div class="row">
                     <div class="col-sm-6 col-md-4">
-                        <a href="{{ URL::asset('/storage/'. $dog->image) }}" data-toggle="lightbox" data-title="{{$dog->name}}" data-footer="{{ $dog->location }}">
-                            <img style="height:500px;width:100%;" src="{{ URL::asset('/storage/'. $dog->image) }}" alt="" class="img-rounded img-responsive" />
+                        <a href="{{ URL::asset('/storage/'. $cat->image) }}" data-toggle="lightbox" data-title="{{$cat->name}}" data-footer="{{ $cat->location }}">
+                            <img style="height:500px;width:100%;" src="{{ URL::asset('/storage/'. $cat->image) }}" alt="" class="img-rounded img-responsive" />
                         </a>
                     </div>
                     <div class="col-sm-6 col-md-8">
                         <h4>
-                            {{$dog->name}}</h4>
-                        <small><cite title="{{ $dog->location }}">{{ $dog->location }} <i class="glyphicon glyphicon-map-marker">
+                            {{$cat->name}}</h4>
+                        <small><cite title="{{ $cat->location }}">{{ $cat->location }} <i class="glyphicon glyphicon-map-marker">
                         </i></cite></small>
                         <p>
                             
-                            <i class="glyphicon glyphicon-book"></i><span>{{ $dog->description }}</span>
+                            <i class="glyphicon glyphicon-book"></i><span>{{ $cat->description }}</span>
                             <br />
-                            <i class="glyphicon glyphicon-glyphicon glyphicon-star-empty"></i>{{ $dog->type }}
+                            <i class="glyphicon glyphicon-glyphicon glyphicon-star-empty"></i>{{ $cat->type }}
                             <br />
                             <i class="glyphicon glyphicon-envelope"></i>email@example.com
                             <br />
-                            <i class="glyphicon glyphicon-gift"></i>{{$dog->created_at}}</p>
+                            <i class="glyphicon glyphicon-gift"></i>{{$cat->created_at}}</p>
                         <!-- Split button -->
                         <div class="btn-group">
                             <button type="button" class="btn btn-primary">
@@ -39,8 +39,8 @@
                                 <li><a href="#">Facebook</a></li>
                                 <li class="divider"></li>
                             </ul>
-                            <button type="button" class="btn btn-primary" style="margin-left:10px;">
-                                Contact Us</button>
+                            <a href="{{route('contact')}}" class="btn btn-primary" style="margin-left:10px;color:white">
+                    Contact Us</a>
                         </div>
                     </div>
                 </div>
