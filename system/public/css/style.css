@@ -6,6 +6,7 @@
 	border: 1px solid;
 	float:left;
 	margin:0 0 10px 5px;
+    box-shadow: 2px 2px 2px #888888;
 }
 
 .image-box > a {
@@ -130,13 +131,9 @@ body {
     text-align: left; /* this overrides the text-align: center on the body element. */
 }
 
-
 .dogTalent #banner {
     padding-top: 0;
     margin-bottom: 15px;
-    width: 900px;
-    width: 900px;
-    margin: 15px auto;
 }
 
 .dogTalent #header h1 {
@@ -160,15 +157,15 @@ body {
 }
 .logo {
     float: left;
-    width: 81px;
-    padding-top: 15px;
+    width: 250px;
     padding-bottom: 5px;
+    padding-top: 15px;
 }
 .topbutton {
     float: right;
     color: #CCC;
     height: 40px;
-    padding-top: 55px;
+    padding-top: 95px;
     font: Verdana, Tahoma, Arial;
 }
 
@@ -479,3 +476,35 @@ body {
 }
 
 /*************************************************************/
+
+/*
+ *  STYLE 11 - scrollbar
+ */
+
+#style-11::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+#style-11::-webkit-scrollbar
+{
+    width: 10px;
+    background-color: #F5F5F5;
+}
+
+#style-11::-webkit-scrollbar-thumb
+{
+    background-color: #3366FF;
+    border-radius: 10px;
+    background-image: -webkit-linear-gradient(0deg,
+                                              rgba(255, 255, 255, 0.5) 25%,
+                                              transparent 25%,
+                                              transparent 50%,
+                                              rgba(255, 255, 255, 0.5) 50%,
+                                              rgba(255, 255, 255, 0.5) 75%,
+                                              transparent 75%,
+                                              transparent)
+}
+

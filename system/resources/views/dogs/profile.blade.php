@@ -2,34 +2,50 @@
 
 @section('css')
 <link rel="stylesheet" href="{{asset('ext_lib/blueimp/css/blueimp-gallery.min.css')}}">
+<style type="text/css">
+
+.animal-content{
+    border:1px solid;
+    box-shadow: 5px 5px 3px #888888;
+    padding:5px;
+    margin:5px;
+    margin-bottom:10px;
+
+}
+
+.link-images{   
+    margin-bottom:2px;
+}
+
+</style>
+
 @endsection
 @section('content')
 
 <div class="row">
-    <div class="col-md-6 col-sm-6">
+    <div class="col-md-5 col-sm-6">
         <div class="row">
             <div id="links" class="links">
                <!--  /**
                  *loop your image here
                  **/ -->
-                <a href="{{ URL::asset('/storage/'. $dog->image) }}">
-                    <img src="{{ URL::asset('/storage/'. $dog->image) }}" width="120px" height="120px" data-gallery>
-                </a>
-                <a href="{{ URL::asset('/storage/'. $dog->image) }}">
-                    <img src="{{ URL::asset('/storage/'. $dog->image) }}" width="120px" height="120px" data-gallery>
-                </a>
-                <a href="{{ URL::asset('/storage/'. $dog->image) }}">
-                    <img src="{{ URL::asset('/storage/'. $dog->image) }}" width="120px" height="120px" data-gallery>
-                </a>
-                <a href="{{ URL::asset('/storage/'. $dog->image) }}">
-                    <img src="{{ URL::asset('/storage/'. $dog->image) }}" width="120px" height="120px" data-gallery>
-                </a><a href="{{ URL::asset('/storage/'. $dog->image) }}">
-                    <img src="{{ URL::asset('/storage/'. $dog->image) }}" width="120px" height="120px" data-gallery>
-                </a><a href="{{ URL::asset('/storage/'. $dog->image) }}">
-                    <img src="{{ URL::asset('/storage/'. $dog->image) }}" width="120px" height="120px" data-gallery>
-                </a><a href="{{ URL::asset('/storage/'. $dog->image) }}">
-                    <img src="{{ URL::asset('/storage/'. $dog->image) }}" width="120px" height="120px" data-gallery>
-                </a>
+                    @php
+                        $images = explode(',', $dog->multiple_images); 
+                    @endphp 
+                @foreach($images as $key => $image)
+                        @php
+                            $image1 = str_replace("[","",$image);
+                            $image2 = str_replace("\\","",$image1);
+                            $image3 = str_replace("]","",$image2);
+                            $image4 = str_replace("\"","",$image3);
+                        @endphp
+
+                    <a href="{{ URL::asset('/storage/'. $image4) }}">
+                        <img class="link-images img-thumbnail" src="{{ URL::asset('/storage/'. $image4) }}" width="120px" height="120px" data-gallery>
+                    </a>
+
+                @endforeach
+
             </div>
 
             <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
@@ -43,24 +59,39 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-sm-6">
+    <div class="col-md-7 col-sm-6">
         <div class="row">
-            <h4>{{$dog->name}}</h4>
-            <small>
-                <cite title="{{ $dog->location }}">
-                    {{ $dog->location }} 
-                    <i class="glyphicon glyphicon-map-marker"></i>
-                </cite>
-            </small>
-            <p>    
-                <i class="glyphicon glyphicon-book"></i><span>{{ $dog->description }}</span>
-                <br />
-                <i class="glyphicon glyphicon-glyphicon glyphicon-star-empty"></i>{{ $dog->type }}
-                <br />
-                <i class="glyphicon glyphicon-envelope"></i>email@example.com
-                <br />
-                <i class="glyphicon glyphicon-gift"></i>{{$dog->created_at}}
-            </p>
+            <div class="animal-content">
+                <h4>Name :<span> {{$dog->name}} </span></h4>
+                <small>
+                    <cite title="{{ $dog->location }}">
+                        {{ $dog->location }} 
+                        <i class="glyphicon glyphicon-map-marker"></i>
+                    </cite>
+                </small>
+                <p>    
+                    <i class="glyphicon glyphicon-book"></i><span>{{ $dog->description }}</span>
+                    <br />
+                    <i class="glyphicon glyphicon-glyphicon glyphicon-star-empty"></i>{{ $dog->type }}
+                    <br />
+                    <i class="glyphicon glyphicon-envelope"></i>email@example.com
+                    <br />
+                    <i class="glyphicon glyphicon-gift"></i>{{ $dog->created_at }}
+                    <br />
+                    <i class="glyphicon glyphicon-gift"></i>{{ $dog->breed }}
+                    <br />
+                    <i class="glyphicon glyphicon-gift"></i>{{ $dog->size }}
+                    <br />
+                    <i class="glyphicon glyphicon-gift"></i>{{ $dog->age }}
+                    <br />
+                    <i class="glyphicon glyphicon-gift"></i>{{ $dog->coat_colour }}
+                    <br />
+                    <i class="glyphicon glyphicon-gift"></i>{{ $dog->skill }}
+                    <br />
+                    <i class="glyphicon glyphicon-gift"></i>{{ $dog->shooting_exp }}
+                    <br />
+                </p>
+            </div>
             <!-- Split button -->
             <div class="btn-group">
                 <button type="button" class="btn btn-primary">

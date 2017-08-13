@@ -2,34 +2,50 @@
 
 @section('css')
 <link rel="stylesheet" href="{{asset('ext_lib/blueimp/css/blueimp-gallery.min.css')}}">
+<style type="text/css">
+
+.animal-content{
+    border:1px solid;
+    box-shadow: 5px 5px 3px #888888;
+    padding:5px;
+    margin:5px;
+    margin-bottom:10px;
+
+}
+
+.link-images{   
+    margin-bottom:2px;
+}
+
+</style>
+
 @endsection
 @section('content')
 
 <div class="row">
-    <div class="col-md-6 col-sm-6">
+    <div class="col-md-5 col-sm-6">
         <div class="row">
             <div id="links" class="links">
                <!--  /**
                  *loop your image here
                  **/ -->
-                <a href="{{ URL::asset('/storage/'. $other->image) }}">
-                    <img src="{{ URL::asset('/storage/'. $other->image) }}" width="120px" height="120px" data-gallery>
-                </a>
-                <a href="{{ URL::asset('/storage/'. $other->image) }}">
-                    <img src="{{ URL::asset('/storage/'. $other->image) }}" width="120px" height="120px" data-gallery>
-                </a>
-                <a href="{{ URL::asset('/storage/'. $other->image) }}">
-                    <img src="{{ URL::asset('/storage/'. $other->image) }}" width="120px" height="120px" data-gallery>
-                </a>
-                <a href="{{ URL::asset('/storage/'. $other->image) }}">
-                    <img src="{{ URL::asset('/storage/'. $other->image) }}" width="120px" height="120px" data-gallery>
-                </a><a href="{{ URL::asset('/storage/'. $other->image) }}">
-                    <img src="{{ URL::asset('/storage/'. $other->image) }}" width="120px" height="120px" data-gallery>
-                </a><a href="{{ URL::asset('/storage/'. $other->image) }}">
-                    <img src="{{ URL::asset('/storage/'. $other->image) }}" width="120px" height="120px" data-gallery>
-                </a><a href="{{ URL::asset('/storage/'. $other->image) }}">
-                    <img src="{{ URL::asset('/storage/'. $other->image) }}" width="120px" height="120px" data-gallery>
-                </a>
+                    @php
+                        $images = explode(',', $other->multiple_images); 
+                    @endphp 
+                @foreach($images as $key => $image)
+                        @php
+                            $image1 = str_replace("[","",$image);
+                            $image2 = str_replace("\\","",$image1);
+                            $image3 = str_replace("]","",$image2);
+                            $image4 = str_replace("\"","",$image3);
+                        @endphp
+
+                    <a href="{{ URL::asset('/storage/'. $image4) }}">
+                        <img class="link-images img-thumbnail" src="{{ URL::asset('/storage/'. $image4) }}" width="120px" height="120px" data-gallery>
+                    </a>
+
+                @endforeach
+
             </div>
 
             <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
@@ -43,24 +59,39 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-sm-6">
+    <div class="col-md-7 col-sm-6">
         <div class="row">
-            <h4>{{$other->name}}</h4>
-            <small>
-                <cite title="{{ $dog->location }}">
-                    {{ $other->location }} 
-                    <i class="glyphicon glyphicon-map-marker"></i>
-                </cite>
-            </small>
-            <p>    
-                <i class="glyphicon glyphicon-book"></i><span>{{ $other->description }}</span>
-                <br />
-                <i class="glyphicon glyphicon-glyphicon glyphicon-star-empty"></i>{{ $other->type }}
-                <br />
-                <i class="glyphicon glyphicon-envelope"></i>email@example.com
-                <br />
-                <i class="glyphicon glyphicon-gift"></i>{{$other->created_at}}
-            </p>
+            <div class="animal-content">
+                <h4>Name :<span> {{$other->name}} </span></h4>
+                <small>
+                    <cite title="{{ $other->location }}">
+                        {{ $other->location }} 
+                        <i class="glyphicon glyphicon-map-marker"></i>
+                    </cite>
+                </small>
+                <p>    
+                    <i class="glyphicon glyphicon-book"></i><span>{{ $other->description }}</span>
+                    <br />
+                    <i class="glyphicon glyphicon-glyphicon glyphicon-star-empty"></i>{{ $other->type }}
+                    <br />
+                    <i class="glyphicon glyphicon-envelope"></i>email@example.com
+                    <br />
+                    <i class="glyphicon glyphicon-gift"></i>{{ $other->created_at }}
+                    <br />
+                    <i class="glyphicon glyphicon-gift"></i>{{ $other->breed }}
+                    <br />
+                    <i class="glyphicon glyphicon-gift"></i>{{ $other->size }}
+                    <br />
+                    <i class="glyphicon glyphicon-gift"></i>{{ $other->age }}
+                    <br />
+                    <i class="glyphicon glyphicon-gift"></i>{{ $other->coat_colour }}
+                    <br />
+                    <i class="glyphicon glyphicon-gift"></i>{{ $other->skill }}
+                    <br />
+                    <i class="glyphicon glyphicon-gift"></i>{{ $other->shooting_exp }}
+                    <br />
+                </p>
+            </div>
             <!-- Split button -->
             <div class="btn-group">
                 <button type="button" class="btn btn-primary">
@@ -80,13 +111,12 @@
         </div>
     </div>
 </div>
-
 <!-- <div class="right-col">
     <div class="col-md-6">
         <div class="col-md-12">
             <div class="row">
-                <a href="{{ URL::asset('/storage/'. $dog->image) }}" data-toggle="lightbox" data-title="{{$dog->name}}" data-footer="{{ $dog->location }}">
-                    <img style="height:700px;width:100%;border:1px solid;" src="{{ URL::asset('/storage/'. $dog->image) }}" alt="" class="img-rounded img-responsive" />
+                <a href="{{ URL::asset('/storage/'. $other->image) }}" data-toggle="lightbox" data-title="{{$other->name}}" data-footer="{{ $other->location }}">
+                    <img style="height:700px;width:100%;border:1px solid;" src="{{ URL::asset('/storage/'. $other->image) }}" alt="" class="img-rounded img-responsive" />
                 </a>        
             </div>
         </div>

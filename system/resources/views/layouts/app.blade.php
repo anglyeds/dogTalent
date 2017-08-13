@@ -12,7 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/style.css?'. time()) }}" rel="stylesheet">
-    <link href="{{ asset('node_modules/simple-slideshow/src/slideshow.css') }}" rel="stylesheet">
+    <link href="{{ asset('node_modules/simple-slideshow/src/slideshow.css?'. time()) }}" rel="stylesheet">
     <link href="{{ asset('node_modules/SpryAssets/SpryMenuBarHorizontal.css') }}" rel="stylesheet">
     <link href="{{ asset('node_modules/SpryAssets/SprySlidingPanels.css') }}" rel="stylesheet">
     <link href="{{ asset('bower_components/bootstrap/dist/css/bootstrap.css') }}" rel="stylesheet">
@@ -44,10 +44,11 @@
 
         .dogTalent #header {
             padding-top: 0;
-            height: 81px;
+            height: 120px;
             border-bottom: 1px dashed #CCC;
             margin-bottom: 15px;
         }
+
 }
 
 .navbar{
@@ -73,7 +74,9 @@
     border-radius: 1px !important;
 }
 
-
+.content-wrapper{
+    margin-bottom:15px;
+}
 
 </style>
 <body class="dogTalent">
@@ -82,7 +85,7 @@
 
         <div id="header">
             <div class="logo">
-                <a href="{{route('home')}}"><img class="img-responsive" src="{{ URL::asset('/storage/logo/hollywoof_logo.jpeg') }}" style=""></a>
+                <a href="{{route('home')}}"><img class="img-responsive" src="{{ URL::asset('/storage/logo/hollywoof_logo_2.jpeg') }}" style=""></a>
             </div>
 
             <div class="topbutton hidden-xs">               
@@ -121,8 +124,9 @@
                     {{session('status')}}
                 </div>
             @endif
+            <div class="content-wrapper">
             @yield('content')
-
+            </div>
         <div id="footer">
            {{ menu('footer_menu', 'layouts.footer') }} 
         </div>
