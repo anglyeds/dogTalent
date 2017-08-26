@@ -60,7 +60,19 @@
 	</div>
 
 	<div class="col-md-10" style="max-width:720px;max-height: 500px;overflow-y:scroll">
+	@if(count($dog))
 		@foreach($dog as $key => $value)
+		<div class="img-box" style="float:left">
+			<a href="{{ URL::to('/dogs/profile/'.$value->id) }}" >
+				<img class="img-responsive image-box" src="{{ URL::asset('/storage/'. $value->image) }}">
+			</a>
+			<p style="text-align:center">{{$value->name}}</p>
+		</div>
+		@endforeach
+	@else
+		<p>No Animals </p>
+	@endif
+		<!-- 		@foreach($dog as $key => $value)
 		<div class="img-box">
 			<a href="{{ URL::to('/dogs/profile/'.$value->id) }}" >
 				<img class="img-responsive image-box" src="{{ URL::asset('/storage/'. $value->image) }}">
@@ -80,14 +92,7 @@
 				<img class="img-responsive image-box" src="{{ URL::asset('/storage/'. $value->image) }}">
 			</a>
 		</div>
-		@endforeach
-				@foreach($dog as $key => $value)
-		<div class="img-box">
-			<a href="{{ URL::to('/dogs/profile/'.$value->id) }}" >
-				<img class="img-responsive image-box" src="{{ URL::asset('/storage/'. $value->image) }}">
-			</a>
-		</div>
-		@endforeach
+		@endforeach -->
 	</div>
 
 </div>

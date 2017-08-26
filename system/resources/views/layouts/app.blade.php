@@ -85,7 +85,7 @@
 
         <div id="header">
             <div class="logo">
-                <a href="{{route('home')}}"><img class="img-responsive" src="{{ URL::asset('/storage/logo/hollywoof_logo_2.jpeg') }}" style=""></a>
+                <a href="{{route('home')}}"><img class="img-responsive" src="{{ URL::asset('/storage/logo/logo1.png') }}" style=""></a>
             </div>
 
             <div class="topbutton hidden-xs">               

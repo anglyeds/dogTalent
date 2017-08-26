@@ -29,22 +29,27 @@
                <!--  /**
                  *loop your image here
                  **/ -->
+                 
                     @php
-                        $images = explode(',', $cat->multiple_images); 
+                    if($cat->multiple_images) {
+                        $images = json_decode($cat->multiple_images); 
+                    }else {
+                        $images = [];
+                    }
                     @endphp 
-                @foreach($images as $key => $image)
-                        @php
-                            $image1 = str_replace("[","",$image);
-                            $image2 = str_replace("\\","",$image1);
-                            $image3 = str_replace("]","",$image2);
-                            $image4 = str_replace("\"","",$image3);
-                        @endphp
+                @if(count($images))
+                    @foreach($images as $key => $image)
+         
+                            
 
-                    <a href="{{ URL::asset('/storage/'. $image4) }}">
-                        <img class="link-images img-thumbnail" src="{{ URL::asset('/storage/'. $image4) }}" width="120px" height="120px" data-gallery>
-                    </a>
+                        <a href="{{ URL::asset('/storage/'. $image) }}">
+                            <img class="link-images img-thumbnail" src="{{ URL::asset('/storage/'. $image) }}" width="120px" height="120px" data-gallery>
+                        </a>
 
-                @endforeach
+                    @endforeach
+                @else
+                    <p> No image yet </p>
+                @endif
 
             </div>
 
